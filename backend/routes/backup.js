@@ -64,7 +64,6 @@ async function restore(file, refLog) {
   } catch (err) {
     refLog.logData.push({
       color: "red",
-      key: tableName,
       Message: `Failed to read backup file`,
     });
     Logging.updateLog(refLog.uuid, refLog.logData, taskstate.FAILED);
@@ -104,7 +103,7 @@ async function restore(file, refLog) {
       const valueString = valuesWithQuotes.join(", ");
 
       const query = `INSERT INTO ${tableName} (${keyString}) VALUES(${valueString})  ON CONFLICT DO NOTHING`;
-      const { rows } = await pool.query(query);
+      await pool.query(query);
     }
   }
   await pool.end();

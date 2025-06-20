@@ -2,7 +2,7 @@ const db = require("../db");
 const moment = require("moment");
 const taskstate = require("../logging/taskstate");
 
-const { jf_logging_columns, jf_logging_mapping } = require("../models/jf_logging");
+const { jf_logging_columns } = require("../models/jf_logging");
 
 async function insertLog(uuid, triggertype, taskType) {
   try {

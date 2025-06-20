@@ -10,7 +10,7 @@ const _POSTGRES_DATABASE = process.env.POSTGRES_DB || "jfstat";
 
 if ([_POSTGRES_USER, _POSTGRES_PASSWORD, _POSTGRES_IP, _POSTGRES_PORT].includes(undefined)) {
   console.log("Error: Postgres details not defined");
-  return;
+  process.exit(1);
 }
 
 const pool = new Pool({
@@ -24,7 +24,7 @@ const pool = new Pool({
   connectionTimeoutMillis: 2000, // Return an error after 2 seconds if connection could not be established
 });
 
-pool.on("error", (err, client) => {
+pool.on("error", (err) => {
   console.error("Unexpected error on idle client", err);
   return;
   //process.exit(-1);
@@ -241,16 +241,11 @@ async function query(text, params, refreshViews = false) {
 }
 
 async function querySingle(sql, params) {
-  try {
-    const { rows: results } = await query(sql, params);
-    if (results.length > 0) {
-      return results[0];
-    } else {
-      return null;
-    }
-  } catch (error) {
-    throw error;
+  const { rows: results } = await query(sql, params);
+  if (results.length > 0) {
+    return results[0];
   }
+  return null;
 }
 
 module.exports = {

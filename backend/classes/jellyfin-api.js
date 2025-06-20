@@ -444,7 +444,7 @@ class JellyfinAPI {
           }
           return response;
         })
-        .catch((error) => {
+        .catch(() => {
           if (this.sessionErrorCounter == 0) {
             this.sessionErrorCounter++;
             console.log("[JELLYFIN-API]: /sessions - Unable to connect. Please check the URL and your network connection");

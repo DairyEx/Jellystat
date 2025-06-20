@@ -1,5 +1,4 @@
 const { pool } = require("../db.js");
-const pgp = require("pg-promise")();
 
 function wrapField(field) {
   if (field === "*") {
