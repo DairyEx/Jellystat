@@ -11,7 +11,7 @@
           table.boolean('IsAdministrator');
         });
   
-        await knex.raw(`ALTER TABLE IF EXISTS jf_users OWNER TO "${process.env.POSTGRES_ROLE}";`);;
+        await knex.raw(`ALTER TABLE IF EXISTS jf_users OWNER TO "${process.env.POSTGRES_ROLE}";`);
       }
     } catch (error) {
       console.error(error);

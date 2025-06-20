@@ -115,7 +115,7 @@ app.use((req, res, next) => {
     return next();
   }
 
-  const fileRegex = /\/([^\/]+\.(css|ico|js|json|png))$/;
+  const fileRegex = /\/([^/]+\.(css|ico|js|json|png))$/;
   const match = req.url.match(fileRegex);
   if (match) {
     // Extract the file name

@@ -1255,11 +1255,6 @@ router.get("/syncPlaybackPluginData", async (req, res) => {
   }
 });
 
-function sleep(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-}
 
 // Handle other routes
 router.use((req, res) => {

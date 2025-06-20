@@ -22,7 +22,9 @@ const setupWebSocketServer = (server, namespacePath) => {
             sendUpdate(payload.tag, payload.message);
           }
         }
-      } catch (error) {}
+      } catch (error) {
+        console.error(error);
+      }
     });
   });
 

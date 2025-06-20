@@ -446,7 +446,7 @@ class EmbyAPI {
           }
           return response;
         })
-        .catch((error) => {
+        .catch(() => {
           if (this.sessionErrorCounter == 0) {
             this.sessionErrorCounter++;
             console.log("[EMBY-API]: /sessions - Unable to connect. Please check the URL and your network connection");

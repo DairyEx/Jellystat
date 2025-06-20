@@ -86,14 +86,14 @@ class TaskManager {
     return !!this.tasks[taskName];
   }
 
-  emitTaskList() {
-    let emitTasks = setInterval(async () => {
-      const taskList = Object.keys(this.taskList).map((key) => {
-        return { task: key, name: this.taskList[key].name, running: this.isTaskRunning(this.taskList[key].name) };
-      });
-      sendUpdate("task-list", taskList);
-    }, 1000);
-  }
+    emitTaskList() {
+      setInterval(async () => {
+        const taskList = Object.keys(this.taskList).map((key) => {
+          return { task: key, name: this.taskList[key].name, running: this.isTaskRunning(this.taskList[key].name) };
+        });
+        sendUpdate("task-list", taskList);
+      }, 1000);
+    }
 }
 
 module.exports = TaskManager;
